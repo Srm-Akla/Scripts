@@ -1,9 +1,7 @@
 # This folder has my scripts.
 
 ### ild 
-Stands for "interactive list display", (i know, not the best name), allows you to change directories much easily.
-#### Problem
-Script is incomplete. To quit, we need to press Ctrl+C. Ideally i want to press **q** to quit.
+Stands for "interactive list display"(I know, not the best name), allows you to change directories easily on terminal.
 
 ### passwd_gen
 Generates a password. Takes *password length* as commandline arument. \

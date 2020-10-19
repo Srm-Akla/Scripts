@@ -2,9 +2,6 @@
 
 #This is a visual cd.
 
-#Problem_6: ls color add
-#Problem_8: need to change into directory when quit
-
 while :
 do
     echo "$PWD"
@@ -33,8 +30,10 @@ do
 	    echo  "----------------------------------------"
 	;;
 
-	'q') echo $PWD;;
-	*) ;;
+	'q') cd $PWD
+	    break 
+	;;
+	*) break ;;
     esac
 
     unset my_array
