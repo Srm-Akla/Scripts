@@ -1,0 +1,20 @@
+#!/bin/bash
+# Upper - 65-90
+# Lower - 97-122
+# Num - 48-57
+# Space - 32
+
+len=$1
+i=0
+arr=()
+for (( i = 0 ; i < $len/3 ; i++ )); do
+    upper=$((RANDOM % 25 + 65))
+    lower=$((RANDOM % 25 + 97))
+    num=$((RANDOM % 9 + 48))
+    arr+= printf "\x$(printf %x $upper)"
+    arr+= printf "\x$(printf %x $lower)"
+    arr+= printf "\x$(printf %x $num)"
+done
+for value in "${arr[@]}"; do
+     echo $value
+done

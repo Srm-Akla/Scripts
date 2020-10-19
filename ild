@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#This is a visual cd.
+
+#Problem_6: ls color add
+#Problem_8: need to change into directory when quit
+
+while :
+do
+    echo "$PWD"
+    mapfile -t -O 1 my_array < <(ls --color=auto)
+    my_array[0]='..' 
+    num=0
+
+    for list in "${my_array[@]}"
+    do
+	echo -e " |\e[38;5;202m$num\e[0m ⟶ $list"
+	((num++))
+    done
+    
+    read -p "Type your number: " -t 30 -r value
+
+    case $value in
+	'0')
+	    cd ..
+	    echo -e " Location \e[92mchanged\e[0m"
+	    echo  "----------------------------------------"
+	;;
+
+	[1-9]|[1-9][0-9]|100) 
+	    cd ${my_array[$value]} 
+	    echo -e "Location \e[92mchanged\e[0m"
+	    echo  "----------------------------------------"
+	;;
+
+	'q') echo $PWD;;
+	*) ;;
+    esac
+
+    unset my_array
+done
+
