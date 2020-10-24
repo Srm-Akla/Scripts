@@ -1,4 +1,4 @@
-# This folder has my scripts.
+# Some of my Scripts
 
 ### ild 
 Stands for "interactive list display"(I know, not the best name), allows you to change directories easily on terminal.
