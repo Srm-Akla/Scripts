@@ -8,13 +8,13 @@ len=$1
 i=0
 arr=()
 for (( i = 0 ; i < $len/3 ; i++ )); do
-    upper=$((RANDOM % 25 + 65))
-    lower=$((RANDOM % 25 + 97))
-    num=$((RANDOM % 9 + 48))
-    arr+= printf "\x$(printf %x $upper)"
-    arr+= printf "\x$(printf %x $lower)"
-    arr+= printf "\x$(printf %x $num)"
+    upper=$((RANDOM % 25 + 65)) #Random number from 65 to 90
+    lower=$((RANDOM % 25 + 97)) #Random number from 97 to 122
+    num=$((RANDOM % 9 + 48)) # Random  number from 48 to 57
+    arr+= printf "\x$(printf %x $upper)" #Converts number to letter
+    arr+= printf "\x$(printf %x $lower)" #Converts number to letter
+    arr+= printf "\x$(printf %x $num)" #Converts number to decimal
 done
 for value in "${arr[@]}"; do
-     echo $value
+     echo $value #prints the password
 done
