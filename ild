@@ -11,7 +11,7 @@ do
 
     for list in "${my_array[@]}"
     do
-	echo -e " |\e[38;5;202m$num\e[0m ⟶ $list" #Prints values of my_array and adds color to it
+	echo -e " |\e[38;5;202m$num\e[0m ⟶  $list" #Prints values of my_array and adds color to it
 	((num++))
     done
     
@@ -33,7 +33,7 @@ do
 	'q') cd $PWD #exits the loop, thus ending program
 	    break 
 	;;
-	*) break ;;
+	*) ;;
     esac
 
     unset my_array
