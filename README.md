@@ -8,7 +8,7 @@ Generates a password. Takes *password length* as commandline arument. \
 
 #### Usage
 
-  ./passwd_gen 13 (generates a password of 13 letters)
+    ./passwd_gen 13 (generates a password of 13 letters)
 
 #### Problem
 - Does not generate key with length:2 or 1
