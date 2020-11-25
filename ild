@@ -4,6 +4,8 @@
 
 while :
 do
+    unset my_array
+    
     echo "$PWD"
     mapfile -t -O 1 my_array < <(ls --color=auto) #Takes output of "ls" and appends to a list "my_array"
     my_array[0]='..'  
