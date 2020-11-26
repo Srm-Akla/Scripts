@@ -10,7 +10,8 @@ f6=~/.config/i3/my_i3lock.sh
 #3>&1 1>&2 2>&3 3>&-
 clear 
 
-File=$(dialog --title "CONFIGS" --menu "Select file" 0 0 0 \
+File=$(dialog --clear \
+    --title "CONFIGS" --menu "Select file" 0 0 0 \
     1 "Xresources" 2 "Bashrc" 3 "Nvim" 4 "I3" 5 "I3 Status" 6 "I3 Lock" \
    --stdout)
 
