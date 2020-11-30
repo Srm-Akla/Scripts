@@ -15,3 +15,6 @@ Generates a password. Takes *password length* as commandline arument. \
 
 ### updt
 Script that runs **update, upgrade, autoremove, autoclean**
+
+### Configs.sh
+Script that creates a dialog box and access your custom list of config files to choose.
