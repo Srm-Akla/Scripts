@@ -1,0 +1,41 @@
+#Custom made .bashrc file
+
+source ~/.git-prompt.sh
+source ~/.git-completion.bash
+
+#--------------------------------------------------------------
+#variables
+date="(\e[38;5;208m$(date +%Z\ %a\ %R:%S)\e[0m)"
+omega="\e[34mΩ\e[39m"
+working_d="\e[38;5;147m[\e[39m\e[1;38;5;107m\w\e[0m\e[38;5;147m]\e[39m "
+#-------------------------------------------------------------
+#customizing prompts
+PS1="${omega} ${date} ${working_d} $(__git_ps1 " (%s)")"
+PS2=":"
+#-------------------------------------------------------------
+#check PS1 is empyth or not
+#if empty, then source from .profile or .bash_profile
+#if [[ -gt 0 ]]; then
+#	echo "this works"
+#fi
+#--------------------------------------------------------------
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+#--------------------------------------------------------------
+#custom aliases
+alias ls="ls --color=always"
+alias la="ls -a  --color=always"
+alias ll="ls -alh --color=always"
+alias grep="grep --color=always"
+
+alias bashrc="vim ~/.bashrc"
+alias clr="clear"
+alias tryhackme="sudo openvpn ~/Documents/ThunderMan.ovpn"
+alias hackthebox="sudo openvpn ~/Documents/ThunderMann.ovpn"
+

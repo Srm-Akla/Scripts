@@ -1,0 +1,97 @@
+#!/bin/bash
+
+#---------Xmonad files-------------
+x_f1=~/.xmonad/xmonad.hs
+x_f2=~/.bashrc
+x_f3=~/.config/xmobar/xmobarrc
+x_f4=~/.config/nvim/init.vim
+
+#--------- I3 files----------
+i3_f1=~/.config/i3/config
+i3_f2=~/.bash/bashrc
+i3_f3=~/.Xresources
+i3_f4=~/.config/nvim/init.vim
+i3_f5=~/.config/i3/i3blocks/i3blocks.conf
+i3_f6=~/.config/i3/my_i3lock.sh
+
+#3>&1 1>&2 2>&3 3>&-
+
+#---------Variables--------------
+wm=$(ps -e | grep -m 1 -oF	\
+		-e xmonad	\
+		-e i3		)
+
+
+#----------Dialog box for Xmonad--------------
+
+xmonad(){
+
+    File=$(dialog --clear \
+        --title "CONFIGS" --menu "Select file" 0 0 0 \
+        1 "Xmonad" 2 "Bash" 3 "Xmobar" 4 "Nvim"  \
+       --stdout)
+    
+    clear
+    
+    case $File in 
+        '1')
+    	nvim $x_f1
+    	;;
+        '2')
+    	nvim $x_f2
+    	;;
+        '3')
+    	nvim $x_f3
+    	;;
+        '4')
+    	nvim $x_f4
+    	;;
+        *)
+    	echo "No files selected"
+    	;;
+    esac
+
+}
+
+#---------Dialog box for I3----------------
+
+i3(){
+    File=$(dialog --clear \
+        --title "CONFIGS" --menu "Select file" 0 0 0 \
+        1 "I3" 2 "Bashrc" 3 "Urxvt" 4 "Nvim" 5 "I3 blocks" 6 "I3 Lock" \
+       --stdout)
+    
+    clear
+    
+    case $File in 
+        '1')
+    	nvim $i3_f1
+    	;;
+        '2')
+    	nvim $i3_f2
+    	;;
+        '3')
+    	nvim $i3_f3
+    	;;
+        '4')
+    	nvim $i3_f4
+    	;;
+        '5')
+    	nvim $i3_f5
+    	;;
+        '6')
+    	nvim $i3_f6
+    	;;
+        *)
+    	echo "No files selected"
+    	;;
+    esac
+}
+
+if [[ $wm == "i3" ]]; then
+    i3
+elif [[ $wm == "xmonad" ]]; then
+    xmonad
+else
+    echo "Unidentified Window Manager"
+fi

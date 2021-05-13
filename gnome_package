@@ -1,0 +1,5 @@
+#!/bin/bash
+#This Scripts all of my current gnome packages
+
+#sudo apt-get remove --purge ubuntu-gnome-desktop
+#sudo apt-get remove --purge gnome-shell
