@@ -26,7 +26,7 @@ wm=$(ps -e | grep -m 1 -oF	\
 
 xmonad(){
 
-    File=$(dialog --clear \
+    File=$(dialog \
         --title "CONFIGS" --menu "Select file" 0 0 0 \
         1 "Xmonad" 2 "Bash" 3 "Xmobar" 4 "Nvim"  \
        --stdout)
@@ -56,12 +56,11 @@ xmonad(){
 #---------Dialog box for I3----------------
 
 i3(){
-    File=$(dialog --clear \
-        --title "CONFIGS" --menu "Select file" 0 0 0 \
-        1 "I3" 2 "Bashrc" 3 "Urxvt" 4 "Nvim" 5 "I3 blocks" 6 "I3 Lock" \
-       --stdout)
-    
-    clear
+    File=$(zenity --list \
+	--width=400 --height=300 \
+        --title "Configuration Files" --column="ID" --column="Select file" \
+        1 "I3" 2 "Bashrc" 3 "Urxvt" 4 "Nvim" 5 "I3 blocks" 6 "I3 Lock" \ 
+	)
     
     case $File in 
         '1')

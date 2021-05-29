@@ -3,9 +3,9 @@
 echo -e "\n$(date "+%d-%m-%Y --- %T") --- Starting work\n"
 
 sudo apt update
-sudo apt -y full-upgrade
+sudo apt full-upgrade
 
-sudo apt -y autoremove
+sudo apt autoremove
 sudo apt autoclean
 
 echo -e "\n$(date "+%T") ---  Script Terminated"
