@@ -9,7 +9,7 @@ x_f4=~/.config/nvim/init.vim
 #--------- I3 files----------
 i3_f1=~/.config/i3/config
 i3_f2=~/.bashrc
-i3_f3=~/.Xresources
+i3_f3=~/.config/alacritty/alacritty.yml
 i3_f4=~/.config/nvim/init.vim
 i3_f5=~/.config/i3/i3blocks/i3blocks.conf
 i3_f6=~/.config/i3/my_i3lock.sh
@@ -61,7 +61,7 @@ i3(){
     File=$(zenity --list \
 	--width=400 --height=300 \
         --title "Configuration Files" --column="ID" --column="Select file" \
-        1 "I3" 2 "Bashrc" 3 "Urxvt" 4 "Nvim" 5 "I3 blocks" 6 "I3 Lock" 7 "Multilock" 8 "Picom" \ 
+        1 "I3" 2 "Bashrc" 3 "Alacritty" 4 "Nvim" 5 "I3 blocks" 6 "I3 Lock" 7 "Multilock" 8 "Picom" \ 
 	)
     
     case $File in 
