@@ -84,6 +84,7 @@ function main(){
     get_kernel
     get_WM
     get_colors
+    echo ""
 }
 
 main
