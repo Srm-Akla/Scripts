@@ -7,13 +7,13 @@ options=$(echo -e "Lock\nLogout\nSleep\nReboot\nPoweroff" | rofi -dmenu -theme "
 
 case $options in
     "Lock")
-	lock.sh
+	lock
 	;;
     "Logout")
 	i3-msg exit
 	;;
     "Sleep")
-	systemctl suspend
+	lock && systemctl suspend
 	;;
     "Reboot")
 	systemctl reboot

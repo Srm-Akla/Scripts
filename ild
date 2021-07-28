@@ -27,12 +27,12 @@ do
 	;;
 
 	[1-9]|[1-9][0-9]|100)  #Value from 1 to 100 
-	    cd ${my_array[$value]} 
+	    cd "${my_array[$value]}" || return 
 	    echo -e "Location \e[92mchanged\e[0m"
 	    echo  "----------------------------------------"
 	;;
 
-	'q') cd $PWD #exits the loop, thus ending program
+	'q') cd "$PWD" || return #exits the loop, thus ending program
 	    break 
 	;;
 	*) ;;
