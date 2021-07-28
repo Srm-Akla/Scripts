@@ -1,0 +1,89 @@
+#!/bin/bash
+
+
+echo_normal="\033[0m"
+
+echo_bold_black="\033[30;1m"
+echo_bold_red="\033[31;1m"
+echo_bold_green="\033[32;1m"
+echo_bold_yellow="\033[33;1m"
+echo_bold_blue="\033[34;1m"
+echo_bold_purple="\033[35;1m"
+echo_bold_cyan="\033[36;1m"
+echo_bold_white="\033[37;1m"
+echo_bold_orange="\033[91;1m"
+
+bg_black="\033[48;5;0m"
+bg_red="\033[48;5;1m"
+bg_green="\033[48;5;2m"
+bg_yellow="\033[48;5;3m"
+bg_blue="\033[48;5;4m"
+bg_purple="\033[48;5;5m"
+bg_cyan="\033[48;5;6m"
+bg_white="\033[48;5;7m"
+
+bg_black2="\033[48;5;8m"
+bg_red2="\033[48;5;9m"
+bg_green2="\033[48;5;10m"
+bg_yellow2="\033[48;5;11m"
+bg_blue2="\033[48;5;12m"
+bg_purple2="\033[48;5;13m"
+bg_cyan2="\033[48;5;14m"
+bg_white2="\033[48;5;15m"
+
+
+function get_distro(){
+    file="/etc/os-release"
+    distro=$(grep -i "pretty" $file | cut -d '"' -f2)  
+    echo -e "$echo_bold_white  / O o_.-'| \t$echo_bold_yellow Distro:$echo_normal $distro"
+}
+
+function get_kernel(){
+    file1="/proc/sys/kernel/ostype"
+    file2="/proc/sys/kernel/osrelease"
+    os=$(cat $file1)
+    release=$(cat $file2)
+    echo -e "$echo_bold_white /O_.-'  O | \t$echo_bold_blue Kernel:$echo_normal $os $release"
+    
+}
+function get_host(){
+    file="/proc/sys/kernel/hostname"
+    host=$(cat $file)
+    echo -e "$echo_bold_white     ___     \t$echo_bold_red HOST:$echo_normal $host"
+}
+
+function get_WM(){
+
+    echo -e "$echo_bold_white | o   o .-' \t$echo_bold_purple Desktop:$echo_normal $XDG_CURRENT_DESKTOP "
+}
+
+function get_shell(){
+
+    shell=$(basename $SHELL)
+    echo -e "$echo_bold_white   .'o O'-._ \t$echo_bold_green SHELL:$echo_normal $shell"
+
+}
+function get_colors(){
+
+    echo -e "$echo_bold_white |o O_.-'    \t $bg_black _ $bg_red _ $bg_green _ $bg_yellow _ $bg_blue _ $bg_purple _ $bg_cyan _ $bg_white _ $echo_normal"
+    echo -e "$echo_bold_white '--'        \t $bg_black2 _ $bg_red2 _ $bg_green2 _ $bg_yellow2 _ $bg_blue2 _ $bg_purple2 _ $bg_cyan2 _ $bg_white2 _ $echo_normal"
+}
+#echo -e "     ___     \t Hello"
+#echo -e "   .'o O'-._ \t Hello"
+#echo -e "  / O o_.-'| \t Hello"
+#echo -e " /O_.-'  O | \t Hello"
+#echo -e " | o   o .-' \t Hello"
+#echo -e " |o O_.-'    \t Hello"
+#echo -e " '--'        \t Hello"
+
+function main(){
+    echo ""
+    get_host
+    get_shell
+    get_distro
+    get_kernel
+    get_WM
+    get_colors
+}
+
+main
