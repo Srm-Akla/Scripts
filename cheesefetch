@@ -3,7 +3,6 @@
 
 echo_normal="\033[0m"
 
-echo_bold_black="\033[30;1m"
 echo_bold_red="\033[31;1m"
 echo_bold_green="\033[32;1m"
 echo_bold_yellow="\033[33;1m"
@@ -11,7 +10,6 @@ echo_bold_blue="\033[34;1m"
 echo_bold_purple="\033[35;1m"
 echo_bold_cyan="\033[36;1m"
 echo_bold_white="\033[37;1m"
-echo_bold_orange="\033[91;1m"
 
 bg_black="\033[48;5;0m"
 bg_red="\033[48;5;1m"
@@ -49,7 +47,7 @@ function get_kernel(){
 function get_host(){
     file="/proc/sys/kernel/hostname"
     host=$(cat $file)
-    echo -e "$echo_bold_white     ___     \t$echo_bold_red HOST:$echo_normal $host"
+    echo -e "$echo_bold_white     ___     \t$echo_bold_red Host:$echo_normal $host"
 }
 
 function get_WM(){
@@ -59,14 +57,20 @@ function get_WM(){
 
 function get_shell(){
 
-    shell=$(basename $SHELL)
-    echo -e "$echo_bold_white   .'o O'-._ \t$echo_bold_green SHELL:$echo_normal $shell"
+    shell=$(basename "$SHELL")
+    echo -e "$echo_bold_white   .'o O'-._ \t$echo_bold_green Shell:$echo_normal $shell"
 
 }
 function get_colors(){
 
-    echo -e "$echo_bold_white |o O_.-'    \t $bg_black _ $bg_red _ $bg_green _ $bg_yellow _ $bg_blue _ $bg_purple _ $bg_cyan _ $bg_white _ $echo_normal"
-    echo -e "$echo_bold_white '--'        \t $bg_black2 _ $bg_red2 _ $bg_green2 _ $bg_yellow2 _ $bg_blue2 _ $bg_purple2 _ $bg_cyan2 _ $bg_white2 _ $echo_normal"
+    echo -e "$echo_bold_white '--'        \t $bg_black _ $bg_red _ $bg_green _ $bg_yellow _ $bg_blue _ $bg_purple _ $bg_cyan _ $bg_white _ $echo_normal"
+    echo -e "$echo_bold_white             \t $bg_black2 _ $bg_red2 _ $bg_green2 _ $bg_yellow2 _ $bg_blue2 _ $bg_purple2 _ $bg_cyan2 _ $bg_white2 _ $echo_normal"
+}
+
+function get_packages(){
+    packages=$(dpkg --list | wc --lines)
+    echo -e "$echo_bold_white |o O_.-'    \t$echo_bold_cyan Packages:$echo_normal $packages"
+
 }
 #echo -e "     ___     \t Hello"
 #echo -e "   .'o O'-._ \t Hello"
@@ -83,7 +87,9 @@ function main(){
     get_distro
     get_kernel
     get_WM
+    get_packages
     get_colors
+
     echo ""
 }
 
