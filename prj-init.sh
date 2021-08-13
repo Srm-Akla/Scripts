@@ -1,22 +1,36 @@
 #!/usr/bin/bash
 
-cinit(){
+function cinit(){
     mkdir inc src build
+    cp $HOME/Projects/LICENSE/gpl-3.0.txt $PWD/LICENSE
+    touch src/main.c
     touch Makefile
     git init
 }
 
-pyinit(){
+function cppinit(){
+    mkdir inc src build
+    cp $HOME/Projects/LICENSE/gpl-3.0.txt $PWD/LICENSE
+    touch src/main.cpp
+    touch Makefile
+    git init
+}
+
+function pyinit(){
     virtualenv .venv
     git init
-    mkdir src
+    cp $HOME/Projects/LICENSE/gpl-3.0.txt $PWD/LICENSE
+    touch main.py
 }
 
 case $1 in 
-    "c"|"C"|"C++"|"Cpp"|"c++"|"cpp")
+    "c"|"C")
 	cinit
 	;;
-    "python"|"py")
+    "C++"|"Cpp"|"c++"|"cpp")
+	cppinit
+	;;
+    "python"|"py"|"python3"|"Python3")
 	pyinit
 	;;
     *)
