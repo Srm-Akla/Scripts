@@ -1,28 +1,32 @@
 #!/bin/bash
 
+#---------Standar_Configs-------------
+
+bashrc=~/.bash/bashrc
+vim_conf=~/.config/nvim/init.vim
+term_conf=~/.config/alacritty/alacritty.yml
+picom_conf=~/.config/picom/picom.conf
+
+
 #---------Xmonad files-------------
 x_f1=~/.xmonad/xmonad.hs
-x_f2=~/.bashrc
-x_f3=~/.config/xmobar/xmobarrc
-x_f4=~/.config/nvim/init.vim
+x_f2=~/.config/xmobar/xmobarrc
 
 #--------- I3 files----------
 i3_f1=~/.config/i3/config
-i3_f2=~/.bashrc
-i3_f3=~/.config/alacritty/alacritty.yml
-i3_f4=~/.config/nvim/init.vim
 i3_f5=~/.config/i3/i3blocks/i3blocks.conf
 i3_f6=~/.config/i3/my_i3lock.sh
 i3_f7=~/.config/multilock/config
-i3_f8=~/.config/picom/picom.conf
 
-#3>&1 1>&2 2>&3 3>&-
+#---------- Sway Config ------------
+sway_f1=~/.config/sway/config
+sway_f2=~/.config/waybar/config
+sway_f3=~/.config/sway/my_swaylock.sh
+
+
 
 #---------Variables--------------
-wm=$(ps -e | grep -m 1 -oF	\
-		-e xmonad	\
-		-e i3		)
-
+wm=$XDG_SESSION_DESKTOP
 
 #----------Dialog box for Xmonad--------------
 
@@ -62,21 +66,23 @@ i3(){
 	--width=600 --height=450 \
         --title "Configs" \
 	--column="ID" --column="Select file" --column="Select file" \
-        1 "I3" "$i3_f1" 2 "Bashrc" "$i3_f2" 3 "Alacritty" "$i3_f3" 4 "Nvim" "$i3_f4" \
-	5 "I3 blocks" "$i3_f5" 6 "I3 Lock" "$i3_f6" 7 "Multilock" "$i3_f7" 8 "Picom" "$i3_f8") 
+        1 "I3" "$i3_f1" 2 "Bash" "$bashrc" \
+	3 "Terminal" "$term_conf" 4 "Nvim" "$vim_conf" \
+	5 "I3 blocks" "$i3_f5" 6 "I3 Lock" "$i3_f6" \
+	7 "Multilock" "$i3_f7" 8 "Picom" "$picom_conf") 
 
     case $File in 
         '1')
     	nvim $i3_f1
     	;;
         '2')
-    	nvim $i3_f2
+    	nvim $bashrc
     	;;
         '3')
-    	nvim $i3_f3
+    	nvim $term_conf
     	;;
         '4')
-    	nvim $i3_f4
+    	nvim $vim_conf
     	;;
         '5')
     	nvim $i3_f5
@@ -88,7 +94,7 @@ i3(){
     	nvim $i3_f7
     	;;
         '8')
-    	nvim $i3_f8
+    	nvim $picom_conf
     	;;
         *)
     	echo "No files selected"
@@ -96,10 +102,49 @@ i3(){
     esac
 }
 
+#---------Dialog box for Sway----------------
+
+sway(){
+    File=$(zenity --list \
+	--width=600 --height=450 \
+        --title "Configs" \
+	--column="ID" --column="Select file" --column="Select file" \
+        1 "Sway" "$sway_f1" 2 "Bashrc" "$bashrc" 3 "Terminal" "$term_conf" 4 "Nvim" "$vim_conf" \
+	5 "Waybar" "$sway_f2" 6 "Sway Lock" "$sway_f3") 
+
+    case $File in 
+        '1')
+    	nvim $sway_f1
+    	;;
+        '2')
+    	nvim $bashrc
+    	;;
+        '3')
+    	nvim $term_conf
+    	;;
+        '4')
+    	nvim $vim_conf
+    	;;
+        '5')
+    	nvim $sway_f2
+    	;;
+        '6')
+    	nvim $sway_f3
+    	;;
+        *)
+    	echo "No files selected"
+    	;;
+    esac
+}
+
+
+
 if [[ $wm == "i3" ]]; then
     i3
 elif [[ $wm == "xmonad" ]]; then
     xmonad
+elif [[ $wm == "sway" ]]; then
+    sway 
 else
     echo "Unidentified Window Manager"
 fi
