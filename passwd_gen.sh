@@ -18,5 +18,5 @@ done
 
 
 for value in "${arr[@]}"; do
-     echo $value #prints the password
+     echo -e "$value \n" #prints the password
 done

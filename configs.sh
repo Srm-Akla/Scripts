@@ -1,12 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
+#---------Variables--------------
+
+wm=$XDG_SESSION_DESKTOP
 #---------Standar_Configs-------------
-
 bashrc=~/.bash/bashrc
 vim_conf=~/.config/nvim/init.vim
-term_conf=~/.config/alacritty/alacritty.yml
 picom_conf=~/.config/picom/picom.conf
-
+term_conf="$HOME/.config/alacritty/alacritty.yml"
 
 #---------Xmonad files-------------
 x_f1=~/.xmonad/xmonad.hs
@@ -20,13 +21,8 @@ i3_f7=~/.config/multilock/config
 
 #---------- Sway Config ------------
 sway_f1=~/.config/sway/config
-sway_f2=~/.config/waybar/config
-sway_f3=~/.config/sway/my_swaylock.sh
-
-
-
-#---------Variables--------------
-wm=$XDG_SESSION_DESKTOP
+sway_f2=~/.config/waybar/
+sway_f3=~/.config/swaylock/config
 
 #----------Dialog box for Xmonad--------------
 
