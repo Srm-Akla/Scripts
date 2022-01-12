@@ -1,4 +1,6 @@
-# Some of my Scripts
+# Some of my scripts
+
+## Shell scripts
 
 ### ild 
 Stands for "interactive list display"(I know, not the best name), allows you to change directories easily on terminal.
@@ -18,3 +20,7 @@ Script that runs **update, upgrade, autoremove, autoclean**
 
 ### Configs.sh
 Script that creates a dialog box and access your custom list of config files to choose.
+
+## Lua scripts
+
+## Perl scripts
