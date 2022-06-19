@@ -2,7 +2,7 @@
 
 function cinit(){
     mkdir inc src build
-    cp $HOME/Projects/LICENSE/gpl-3.0.txt $PWD/LICENSE
+    cp "$HOME/Projects/LICENSE/gpl-3.0.txt" "$PWD/LICENSE"
     touch src/main.c
     touch Makefile
     git init
@@ -10,7 +10,7 @@ function cinit(){
 
 function cppinit(){
     mkdir inc src build
-    cp $HOME/Projects/LICENSE/gpl-3.0.txt $PWD/LICENSE
+    cp "$HOME/Projects/LICENSE/gpl-3.0.txt" "$PWD/LICENSE"
     touch src/main.cpp
     touch Makefile
     git init
@@ -19,7 +19,7 @@ function cppinit(){
 function pyinit(){
     virtualenv .venv
     git init
-    cp $HOME/Projects/LICENSE/gpl-3.0.txt $PWD/LICENSE
+    cp "$HOME/Projects/LICENSE/gpl-3.0.txt" "$PWD/LICENSE"
     touch main.py
 }
 

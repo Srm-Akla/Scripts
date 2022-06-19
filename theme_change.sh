@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 # Author: Sriram Akella
 #=================================================
 
@@ -13,23 +13,27 @@ declare -A files
 declare -A light 
 declare -A dark 
 
-light[gtk]="Nordic-Polar"
-light[bat]="OneHalfLight"
+light[gtk]="Colloid-light-dracula"
+light[bat]="GitHub"
 light[fm]="solarized-light"
-light[term]="day"
+light[term]="dayfox"
+light[editor]="dayfox"
+light[bg_img]="wp3632856-2560x1080-wallpapers.jpg"
 
-dark[gtk]="Nordic-v40"
-dark[bat]="OneHalfDark"
+dark[gtk]="Dracula"
+dark[bat]="Dracula"
 dark[fm]="palenight"
-dark[term]="nord"
+dark[term]="duskfox"
+dark[editor]="duskfox"
+dark[bg_img]="wp3632857-2560x1080-wallpapers.jpg"
 
 files[gtk]="$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
 files[bat]="$XDG_CONFIG_HOME/bat/config"
-files[fm]="$XDG_CONFIG_HOME/vifm/vifmrc"
+#files[fm]="$XDG_CONFIG_HOME/vifm/vifmrc"
 files[launcher]="$XDG_CONFIG_HOME/rofi/themes/my-slate.rasi"
 files[powermenu]="$XDG_CONFIG_HOME/rofi/themes/my-powermenu.rasi"
 files[xresources]="$HOME/.Xresources"
-files[term]="$XDG_CONFIG_HOME/alacritty/schemes.yml"
+files[term]="$XDG_CONFIG_HOME/alacritty/fox.yml"
 
 if [[ "$EDITOR" == "nvim" ]]; then
     files[editor]="$XDG_CONFIG_HOME/nvim/lua/themes.lua"
@@ -60,9 +64,9 @@ esac
 check_files(){
     for val in "${files[@]}"; do
         if [[ -e $val ]]; then
-            echo -e "$val: \e[1;32m found \e[00m"
+            echo -e "\e[1;32mOK\e[00m: $val"
         else
-            echo -e "$val: \e[1;31m not found \e[00m"
+            echo -e "\e[1;31mERROR \e[00m: $val"
         fi
     done
 }
@@ -71,7 +75,6 @@ test(){
     for i in "${files[1..3]}"; do
         echo $i
     done
-
 }
 
 
@@ -83,18 +86,21 @@ light_mode(){
     sed -i -e "s/${dark[term]}/${light[term]}/g" "${files[powermenu]}" 
     sed -i -e "s/${dark[term]}/${light[term]}/g" "${files[launcher]}"  
     sed -i -e "s/${dark[term]}/${light[term]}/g" "${files[wm]}"  
-    sed -i 's/colorscheme\ nordfox/colorscheme\ dayfox/g' "${files[editor]}"
-    
-    sed -i 's/OneHalfDark/OneHalfLight/g' "${files[bat]}"
     sed -i -e "s/${dark[gtk]}/${light[gtk]}/g" "${files[gtk]}"
-    sed -i -e "s/${dark[fm]}/${light[fm]}/g" "${files[fm]}"
+    #sed -i -e "s/${dark[fm]}/${light[fm]}/g" "${files[fm]}"
+
+    sed -i -e "s/colorscheme ${dark[editor]}/colorscheme ${light[editor]}/g" "${files[editor]}"
+    sed -i -e "s/${dark[bat]}/${light[bat]}/g" "${files[bat]}"
     ##sed -i 's/palenight/solarized-light/g' "${files[fm]}"
+    sed -i -e "s/${dark[bg_img]}/${light[bg_img]}/g" "${files[wm]}"
 
     #Gnome-terminal
     #gsettings set org.gnome.Terminal.ProfilesList default "0e5d2f4b-4b67-4f83-8486-3349870fee49" 
 
     # Xresources 
     xrdb "${files[xresources]}"
+
+    polybar-msg cmd restart
 }
 
 dark_mode(){
@@ -105,16 +111,18 @@ dark_mode(){
     sed -i -e "s/${light[term]}/${dark[term]}/g" "${files[powermenu]}" 
     sed -i -e "s/${light[term]}/${dark[term]}/g" "${files[launcher]}"  
     sed -i -e "s/${light[gtk]}/${dark[gtk]}/g"   "${files[gtk]}"
-    sed -i -e "s/${light[fm]}/${dark[fm]}/g"     "${files[fm]}"
+    #sed -i -e "s/${light[fm]}/${dark[fm]}/g"     "${files[fm]}"
 
-    sed -i 's/colorscheme\ dayfox/colorscheme\ nordfox/g' "${files[editor]}"
-    sed -i 's/OneHalfLight/OneHalfDark/g' "${files[bat]}"
+    sed -i -e "s/colorscheme ${light[editor]}/colorscheme ${dark[editor]}/g" "${files[editor]}"
+    sed -i -e "s/${light[bat]}/${dark[bat]}/g" "${files[bat]}"
+    sed -i -e "s/${light[bg_img]}/${dark[bg_img]}/g" "${files[wm]}"
 
     #Gnome-terminal
     #gsettings set org.gnome.Terminal.ProfilesList default '0bc4cc73-eb52-4a0c-a2cc-34441556a7a0'
 
     # Xresources 
     xrdb "${files[xresources]}"
+    polybar-msg cmd restart
 }
 
 sway(){
@@ -133,10 +141,10 @@ help(){
 #=================================================
 case "$1" in 
     "-l" | "--light")
-        echo -e "\e[1;92m Light mode set $(light_mode)\e[00m $(sway)"
+        echo -e "\e[1;92m Light mode set $(light_mode)\e[00m "
         ;;
     "-d" | "--dark")
-        echo -e "\e[1;92m Dark mode set $(dark_mode)\e[00m $(sway)"
+        echo -e "\e[1;92m Dark mode set $(dark_mode)\e[00m"
         ;;
     "-c" | "--check")
         check_files

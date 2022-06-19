@@ -7,13 +7,13 @@ options=$(echo -e "Lock\nLogout\nSleep\nReboot\nPoweroff" | rofi -dmenu -theme "
 
 case $options in
     "Lock")
-	~/.config/i3/my_i3lock.sh
+	betterlockscreen -l
 	;;
     "Logout")
 	i3-msg exit
 	;;
     "Sleep")
-	~/.config/i3/my_i3lock.sh && systemctl suspend
+	betterlockscreen -s
 	;;
     "Reboot")
 	systemctl reboot

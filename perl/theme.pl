@@ -9,7 +9,7 @@ my $arg1=$ARGV[0] or die "No Arguments found!\n use '-h' for help \n";
 my $flag; # 0 = light mode ; 1 = dark mode;
 
 my %light= ( 
-    "gtk"  =>  "Nordic-Polar",
+    "gtk" =>  "Nordic-Polar",
     "bat" => "OneHalfLight",
     "fm" => "my-light",
     "term" => "day"

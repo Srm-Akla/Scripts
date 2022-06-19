@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 #---------Variables--------------
 
@@ -37,16 +37,16 @@ xmonad(){
     
     case $File in 
         '1')
-    	nvim $x_f1
-    	;;
-        '2')
-    	nvim $x_f2
-    	;;
-        '3')
-    	nvim $x_f3
-    	;;
-        '4')
-    	nvim $x_f4
+    	nvim "$x_f1"
+    	;;        
+        '2')       
+    	nvim "$x_f2"
+    	;;         
+        '3')      
+    	nvim "$x_f3"
+    	;;         
+        '4')      
+    	nvim "$x_f4"
     	;;
         *)
     	echo "No files selected"
@@ -58,17 +58,10 @@ xmonad(){
 #---------Dialog box for I3----------------
 
 i3(){
-    File=$(zenity --list \
-	--width=600 --height=450 \
-        --title "Configs" \
-	--column="ID" --column="Select file" --column="Select file" \
-        1 "I3" "$i3_f1" 2 "Bash" "$bashrc" \
-	3 "Terminal" "$term_conf" 4 "Nvim" "$vim_conf" \
-	5 "I3 blocks" "$i3_f5" 6 "I3 Lock" "$i3_f6" \
-	7 "Multilock" "$i3_f7" 8 "Picom" "$picom_conf") 
+    File=$(echo -e "I3\nBash\nTerminal\nNvim\nLemonbar\nPicom\nBetterlockscreen" | sk --height=20%)
 
     case $File in 
-        '1')
+        'I3')
     	nvim $i3_f1
     	;;
         '2')
