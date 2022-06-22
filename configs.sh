@@ -5,7 +5,7 @@
 wm=$XDG_SESSION_DESKTOP
 #---------Standar_Configs-------------
 bashrc=~/.bash/bashrc
-vim_conf=~/.config/nvim/init.vim
+vim_conf=~/.config/nvim/init.lua
 picom_conf=~/.config/picom/picom.conf
 term_conf="$HOME/.config/alacritty/alacritty.yml"
 
@@ -15,9 +15,8 @@ x_f2=~/.config/xmobar/xmobarrc
 
 #--------- I3 files----------
 i3_f1=~/.config/i3/config
-i3_f5=~/.config/i3/i3blocks/i3blocks.conf
-i3_f6=~/.config/i3/my_i3lock.sh
-i3_f7=~/.config/multilock/config
+i3_f6=~/.config/polybar/config.ini
+i3_f7=~/.config/betterlockscreen/config
 
 #---------- Sway Config ------------
 sway_f1=~/.config/sway/config
@@ -58,31 +57,28 @@ xmonad(){
 #---------Dialog box for I3----------------
 
 i3(){
-    File=$(echo -e "I3\nBash\nTerminal\nNvim\nLemonbar\nPicom\nBetterlockscreen" | sk --height=20%)
+    File=$(echo -e "I3\nBash\nTerminal\nNvim\nPolybar\nPicom\nBetterlockscreen" | sk --height=20%)
 
     case $File in 
         'I3')
     	nvim $i3_f1
     	;;
-        '2')
+        'Bash')
     	nvim $bashrc
     	;;
-        '3')
+        'Terminal')
     	nvim $term_conf
     	;;
-        '4')
+        'Nvim')
     	nvim $vim_conf
     	;;
-        '5')
-    	nvim $i3_f5
-    	;;
-        '6')
+        'Polybar')
     	nvim $i3_f6
     	;;
-        '7')
+        'Betterlockscreen')
     	nvim $i3_f7
     	;;
-        '8')
+        'Picom')
     	nvim $picom_conf
     	;;
         *)
