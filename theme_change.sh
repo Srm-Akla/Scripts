@@ -20,16 +20,14 @@ light[term]="latte"
 light[editor]="latte"
 light[xresources]="latte"
 light[launcher]="dayfox"
-light[bg_img]="wp3632856-2560x1080-wallpapers.jpg"
 
-dark[gtk]="Catppuccin-Dark-B"
+dark[gtk]="Catppuccin-Mocha-B"
 dark[bat]="Dracula"
 dark[fm]="palenight"
 dark[term]="mocha"
 dark[editor]="mocha"
 dark[xresources]="mocha"
 dark[launcher]="duskfox"
-dark[bg_img]="wp3632857-2560x1080-wallpapers.jpg"
 
 files[gtk]="$XDG_CONFIG_HOME/gtk-3.0/settings.ini"
 files[bat]="$XDG_CONFIG_HOME/bat/config"
@@ -45,10 +43,6 @@ fi
 
 # Variables for WM
 case "$XDG_SESSION_DESKTOP" in 
-    "sway")
-        #echo "SWAY detected"
-        files[wm]="$XDG_CONFIG_HOME/sway/config"
-        ;;
     "i3")
         #echo "I3wm detected"
         files[wm]="$XDG_CONFIG_HOME/i3/config"
@@ -75,13 +69,6 @@ check_files(){
     done
 }
 
-test(){
-    for i in "${files[1..3]}"; do
-        echo $i
-    done
-}
-
-
 light_mode(){
 
     sed -i -e "s/*${dark[term]}/*${light[term]}/g" "${files[term]}"
@@ -89,51 +76,34 @@ light_mode(){
 
     sed -i -e "s/${dark[launcher]}/${light[launcher]}/g" "${files[powermenu]}" 
     sed -i -e "s/${dark[launcher]}/${light[launcher]}/g" "${files[launcher]}"  
-    sed -i -e "s/${dark[term]}/${light[term]}/g" "${files[wm]}"  
+    #sed -i -e "s/${dark[term]}/${light[term]}/g" "${files[wm]}"  
     sed -i -e "s/${dark[gtk]}/${light[gtk]}/g" "${files[gtk]}"
-    #sed -i -e "s/${dark[fm]}/${light[fm]}/g" "${files[fm]}"
 
-    sed -i -e "s/${dark[editor]}/${light[editor]}/g" "${files[editor]}"
+#    sed -i -e "s/${dark[editor]}/${light[editor]}/g" "${files[editor]}"
     sed -i -e "s/${dark[bat]}/${light[bat]}/g" "${files[bat]}"
-    sed -i -e "s/${dark[bg_img]}/${light[bg_img]}/g" "${files[wm]}"
-
-    #Gnome-terminal
-    #gsettings set org.gnome.Terminal.ProfilesList default "0e5d2f4b-4b67-4f83-8486-3349870fee49" 
 
     # Xresources 
     xrdb "${files[xresources]}"
-    polybar-msg cmd restart
-    export THEME_MODE="LIGHT"
+    #polybar-msg cmd restart
 }
 
 dark_mode(){
     sed -i -e "s/*${light[term]}/*${dark[term]}/g" "${files[term]}"
 
-    sed -i -e "s/${light[term]}/${dark[term]}/g" "${files[wm]}"
+    #sed -i -e "s/${light[term]}/${dark[term]}/g" "${files[wm]}"
     sed -i -e "s/${light[xresources]}/${dark[xresources]}/" "${files[xresources]}"
     sed -i -e "s/${light[launcher]}/${dark[launcher]}/g" "${files[powermenu]}" 
     sed -i -e "s/${light[launcher]}/${dark[launcher]}/g" "${files[launcher]}"  
     sed -i -e "s/${light[gtk]}/${dark[gtk]}/g"   "${files[gtk]}"
-    #sed -i -e "s/${light[fm]}/${dark[fm]}/g"     "${files[fm]}"
 
-    sed -i -e "s/${light[editor]}/${dark[editor]}/g" "${files[editor]}"
+#    sed -i -e "s/${light[editor]}/${dark[editor]}/g" "${files[editor]}"
     sed -i -e "s/${light[bat]}/${dark[bat]}/g" "${files[bat]}"
-    sed -i -e "s/${light[bg_img]}/${dark[bg_img]}/g" "${files[wm]}"
-
-    #Gnome-terminal
-    #gsettings set org.gnome.Terminal.ProfilesList default '0bc4cc73-eb52-4a0c-a2cc-34441556a7a0'
 
     # Xresources 
     xrdb "${files[xresources]}"
-    polybar-msg cmd restart
-    export THEME_MODE="DARK"
+    #polybar-msg cmd restart
 }
 
-sway(){
-    if [[ "$XDG_SESSION_DESKTOP" == "sway" ]]; then
-        source "$XDG_CONFIG_HOME/sway/gtk-settings" && echo "Sway mode set"
-    fi
-}
 
 help(){
     echo -e " \e[1mOptions:\e[00m
@@ -145,7 +115,7 @@ help(){
 #=================================================
 case "$1" in 
     "-l" | "--light")
-        echo -e "\e[1;92m Light mode set $(light_mode)\e[00m "
+        light_mode
         ;;
     "-d" | "--dark")
         echo -e "\e[1;92m Dark mode set $(dark_mode)\e[00m"

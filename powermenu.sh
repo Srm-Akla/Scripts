@@ -10,7 +10,7 @@ case $options in
 	betterlockscreen -l
 	;;
     "Logout")
-	i3-msg exit
+	pkill "$XDG_SESSION_DEKSTOP"
 	;;
     "Sleep")
 	betterlockscreen -s

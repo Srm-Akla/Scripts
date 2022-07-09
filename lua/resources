@@ -1,0 +1,97 @@
+[38;2;248;248;242m!*.perl-lib: $HOME/.config/urxvt/ext/[0m
+[38;2;248;248;242m!#include "/home/thunder/.config/XFiles/dayfox.Xresources"[0m
+[38;2;248;248;242m#include "/home/thunder/.config/XFiles/catppuccin_mocha.Xresources"[0m
+
+[38;2;248;248;242mXft.dpi: 96[0m
+[38;2;248;248;242mXft.antialias: true[0m
+[38;2;248;248;242mXft.hinting: true[0m
+[38;2;248;248;242mXft.rgba: rgba[0m
+[38;2;248;248;242mXft.autohint: false[0m
+[38;2;248;248;242mXft.hintstyle: hintfull[0m
+[38;2;248;248;242mXft.lcdfilter: lcddefault[0m
+
+[38;2;248;248;242mxscreensaver.fade:   true[0m
+[38;2;248;248;242mxscreensaver.unfade: false[0m
+
+[38;2;248;248;242m*.scrollBar: off[0m
+[38;2;248;248;242m*.imLocale: en_NO.UTF-8[0m
+
+[38;2;248;248;242m! general settings[0m
+[38;2;248;248;242mURxvt.saveLines:        50000[0m
+[38;2;248;248;242mURxvt.termName:         xterm-256color[0m
+[38;2;248;248;242mURxvt.urgentOnBell:     false[0m
+[38;2;248;248;242mURxvt.visualBell:       false[0m
+[38;2;248;248;242mURxvt.iso14755:         false[0m
+[38;2;248;248;242mURxvt.iso14755_52:      false[0m
+[38;2;248;248;242mURxvt.meta8:            false[0m
+[38;2;248;248;242mURxvt.metaSendsEscape:  true[0m
+[38;2;248;248;242mURxvt.iconFile:  		/usr/share/icons/Sardi-Mono/scalable/apps/terminal.svg[0m
+[38;2;248;248;242mURxvt.urlLauncher:      firefox[0m
+[38;2;248;248;242mURxvt.underlineURLs:    true[0m
+[38;2;248;248;242mURxvt.urlButton:        1[0m
+
+[38;2;248;248;242m! appearance[0m
+[38;2;248;248;242mURxvt.geometry: 		100x30[0m
+[38;2;248;248;242mURxvt.depth:             32[0m
+[38;2;248;248;242mURxvt.transparent:      false[0m
+[38;2;248;248;242mURxvt.shading:           80[0m
+[38;2;248;248;242mURxvt.underlineColor:    #4682B4[0m
+[38;2;248;248;242mURxvt.highlightColor:    #666666[0m
+[38;2;248;248;242mURxvt.throughColor:      #4682B4[0m
+[38;2;248;248;242mURxvt.scrollBar:         false[0m
+[38;2;248;248;242mURxvt.scrollTtyOutput:   false[0m
+[38;2;248;248;242mURxvt.scrollWithBuffer:  true[0m
+[38;2;248;248;242mURxvt.scrollTtyKeypress: true[0m
+[38;2;248;248;242mURxvt.internalBorder:    10[0m
+[38;2;248;248;242mURxvt.externalBorder:    0[0m
+[38;2;248;248;242mURxvt.colorIT:      	 #4682B4[0m
+[38;2;248;248;242mURxvt.colorBD:      	 #F9F9F9[0m
+[38;2;248;248;242mURxvt.colorUL:      	 #87afd7[0m
+
+[38;2;248;248;242m! fonts[0m
+[38;2;248;248;242mURxvt.letterSpace: 	    		0[0m
+[38;2;248;248;242mURxvt.font:                 	xft:Fira code:regular:size=11[0m
+[38;2;248;248;242mURxvt.imFont:               	xft:Fira code:regular:size=11[0m
+[38;2;248;248;242mURxvt.italicFont:           	xft:Fira code:italic:size=11[0m
+[38;2;248;248;242mURxvt.boldFont:             	xft:Fira code:bold:size=11[0m
+[38;2;248;248;242mURxvt.boldItalicFont:     		xft:Fira Mono:regular:size=11[0m
+[38;2;248;248;242m! run :.!fc-list | grep <font-name>[0m
+
+[38;2;248;248;242m! perl extensions[0m
+[38;2;248;248;242m! You can install extra perl extensions you should add them here[0m
+[38;2;248;248;242mURxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,fullscreen,resize-font[0m
+[38;2;248;248;242m!URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed[0m
+
+[38;2;248;248;242m! macros for resize-font - sudo pacman -S urxvt-resize-font-git[0m
+[38;2;248;248;242mURxvt.resize-font.step:   1[0m
+[38;2;248;248;242mURxvt.keysym.C-minus:     resize-font:smaller[0m
+[38;2;248;248;242mURxvt.keysym.C-plus:      resize-font:bigger[0m
+[38;2;248;248;242mURxvt.keysym.C-equal:     resize-font:reset[0m
+[38;2;248;248;242mURxvt.keysym.C-question:  resize-font:show[0m
+[38;2;248;248;242mURxvt.keysym.C-Down:      resize-font:smaller[0m
+[38;2;248;248;242mURxvt.keysym.C-Up:        resize-font:bigger[0m
+
+[38;2;248;248;242m! macros for clipboard and selection[0m
+[38;2;248;248;242mURxvt.copyCommand:      xclip -i -selection clipboard[0m
+[38;2;248;248;242mURxvt.pasteCommand:     xclip -o -selection clipboard[0m
+[38;2;248;248;242mURxvt.keysym.M-c:       perl:clipboard:copy[0m
+[38;2;248;248;242mURxvt.keysym.m-v:       perl:clipboard:paste[0m
+[38;2;248;248;242mURxvt.keysym.M-C-v:     perl:clipboard:paste_escaped[0m
+[38;2;248;248;242mURxvt.keysym.M-Escape:  perl:keyboard-select:activate[0m
+[38;2;248;248;242mURxvt.keysym.M-s:       perl:keyboard-select:search[0m
+[38;2;248;248;242mURxvt.keysym.M-u:       perl:url-select:select_next[0m
+
+[38;2;248;248;242m! fullscreen - sudo pacman -S urxvt-fullscreen[0m
+[38;2;248;248;242murxvt.keysym.F11:       perl:fullscreen:switch[0m
+
+[38;2;248;248;242m! tabbed[0m
+[38;2;248;248;242mURxvt.tabbed.tabbar-fg: 4[0m
+[38;2;248;248;242mURxvt.tabbed.tabbar-bg: 16[0m
+[38;2;248;248;242mURxvt.tabbed.tab-fg:    15[0m
+[38;2;248;248;242mURxvt.tabbed.tab-bg:    4[0m
+[38;2;248;248;242mURxvt.buffered:         false[0m
+
+[38;2;248;248;242m! clipboard[0m
+[38;2;248;248;242mURxvt.keysym.Control-Shift-C: perl:clipboard:copy[0m
+[38;2;248;248;242mURxvt.keysym.Control-Shift-V: perl:clipboard:paste[0m
+
